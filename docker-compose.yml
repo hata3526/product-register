@@ -9,7 +9,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - '.:/product-register'
+      - './:/product-register'
     environment:
       - 'DATABASE_PASSWORD=postgres'
     tty: true
@@ -20,8 +20,8 @@ services:
       - db
 
   db:
-    image: postgres
+    image: postgres:latest
     environment:
-      'POSTGRES_HOST_AUTH_METHOD=trust'
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
     volumes:
       - 'db-data:/var/lib/postgresql/data'
