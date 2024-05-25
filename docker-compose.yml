@@ -11,6 +11,9 @@ services:
     volumes:
       - './:/product-register'
     environment:
+      - 'DATABASE_USER=postgres'
+      - 'DATABASE_PASSWORD=postgres'
+      - 'DATABASE_HOST=db'
       - 'DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres'
     tty: true
     stdin_open: true
