@@ -11,17 +11,18 @@ services:
     volumes:
       - './:/product-register'
     environment:
-      - 'DATABASE_PASSWORD=postgres'
+      - 'DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres'
     tty: true
     stdin_open: true
     depends_on:
-      - db
-    links:
       - db
 
   db:
     image: postgres:latest
     environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
     volumes:
       - 'db-data:/var/lib/postgresql/data'
